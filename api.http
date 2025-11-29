@@ -1,0 +1,20 @@
+### Lấy danh sách user
+GET {{api_base}}/users
+Authorization: Bearer {{token}}
+
+### Tạo user
+POST {{api_base}}/users
+Content-Type: application/json
+
+{
+  "name": "ChatGPT",
+  "email": "bot@example.com"
+}
+
+### advice 
+POST {{api_base}}/advice
+Content-Type: application/json
+
+{
+  "birthdate": "10/05/1990"
+}

@@ -1,6 +1,53 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+  // ===========================
+  // REST CLIENT CONFIG
+  // ===========================
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "api_base": "http://localhost:3000",
+      "token": ""
+    },
+    "dev": {
+      "api_base": "http://localhost:3000",
+      "token": "dev-token-123"
+    },
+    "prod": {
+      "api_base": "https://api.example.com",
+      "token": "prod-token-xxx"
+    }
   },
-  "editor.formatOnSave": false
+
+  // Hiển thị response dạng JSON đẹp
+  "rest-client.previewResponseInUntitledDocument": false,
+  "rest-client.rememberCookiesForSubsequentRequests": true,
+
+  // ===========================
+  // THUNDER CLIENT CONFIG
+  // ===========================
+  "thunder-client.saveToWorkspace": true,
+  "thunder-client.autoSave": true,
+  "thunder-client.showActivityBarIcon": true,
+
+  // ===========================
+  // NODE.JS DEVELOPMENT SETTINGS
+  // ===========================
+  "files.autoSave": "onFocusChange",
+
+  // Format code Node.js/JS/TS
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Terminal default
+  "terminal.integrated.defaultProfile.linux": "bash",
+
+  // ===========================
+  // GENERAL BACKEND SETTINGS
+  // ===========================
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  // Linting
+  "eslint.enable": true,
+  "eslint.run": "onSave"
 }
