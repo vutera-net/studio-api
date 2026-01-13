@@ -1,4 +1,7 @@
 const express = require('express');
+const sendDailyNotification = require("./sendDailyNotification");
+require("./cron");
+
 const app = express();
 
 app.use(express.json());
@@ -43,4 +46,15 @@ app.post('/advice', (req, res) => {
   }
 
   res.json({ dateOfBirth, today, advice });
+});
+
+
+app.post("/send-notification", async (req, res) => {
+  try {
+    await sendDailyNotification();
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, error });
+  }
 });
