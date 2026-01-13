@@ -1,22 +1,36 @@
 const express = require('express');
-const sendDailyNotification = require("./sendDailyNotification");
-require("./cron");
+const sendDailyNotification = require('./sendDailyNotification');
+require('./cron');
 
 const app = express();
 
 app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.json({ message: 'API is running!' });
-});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log('Server running on port ' + PORT);
 });
 
+app.get('/', (req, res) => {
+  res.json({
+    name: 'Studio API',
+    version: process.env.APP_VERSION || '1.0.0',
+    env: process.env.NODE_ENV || 'development',
+    time: new Date().toISOString(),
+    docs: '/docs',
+  });
+});
+
 app.get('/health-check', (req, res) => {
-  res.json({ message: 'API is healthy!' });
+  const now = new Date();
+
+  res.json({
+    status: 'ok',
+    message: 'API is healthy!',
+    serverTimeUTC: now.toISOString(),
+    serverTimeLocal: now.toString(),
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  });
 });
 
 app.post('/advice', (req, res) => {
@@ -48,8 +62,7 @@ app.post('/advice', (req, res) => {
   res.json({ dateOfBirth, today, advice });
 });
 
-
-app.post("/send-notification", async (req, res) => {
+app.post('/send-notification', async (req, res) => {
   try {
     await sendDailyNotification();
     res.status(200).json({ success: true });
