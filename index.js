@@ -1,6 +1,6 @@
 const express = require('express');
 const sendDailyNotification = require('./sendDailyNotification');
-require('./cron');
+// require('./cron');
 
 const app = express();
 
