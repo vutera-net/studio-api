@@ -12,7 +12,7 @@
       "token": "dev-token-123"
     },
     "prod": {
-      "api_base": "https://api.example.com",
+      "api_base": "https://studio-api-o5fh.onrender.com",
       "token": "prod-token-xxx"
     }
   },

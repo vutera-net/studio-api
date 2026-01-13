@@ -1,15 +1,8 @@
-### Lấy danh sách user
-GET {{api_base}}/users
-Authorization: Bearer {{token}}
+### home
+GET {{api_base}}/
 
-### Tạo user
-POST {{api_base}}/users
-Content-Type: application/json
-
-{
-  "name": "ChatGPT",
-  "email": "bot@example.com"
-}
+### health-check
+GET {{api_base}}/health-check
 
 ### advice 
 POST {{api_base}}/advice
